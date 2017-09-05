@@ -13,7 +13,7 @@ import cucumber.api.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions(format = {"pretty", "html:target/cucumber"},
                  features = "src/test/resources/com/brianthi/automation/craigslist")
-public class CraigslistTestsRunner {
+public class CraigslistChromeTestRunner {
 
     @Bean
     public WebDriver webDriver() {

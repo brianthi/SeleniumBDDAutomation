@@ -24,6 +24,7 @@
         <selenium.version>2.53.1</selenium.version>
 
         <maven.compiler.version>3.1</maven.compiler.version>
+        <maven.failsafe-plugin.version>2.18.1</maven.failsafe-plugin.version>
     </properties>
 
     <modules>
@@ -41,6 +42,31 @@
                     <target>${java.compiler.version}</target>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>${maven.failsafe-plugin.version}</version>
+                <configuration>
+                    <forkCount>5</forkCount>
+                    <reuseForks>true</reuseForks>
+                    <includes>
+                        <include>**/*.java</include>
+                    </includes>
+                    <argLine>-Xmx512m</argLine>
+                    <parallel>classes</parallel>
+                    <threadCount>1</threadCount>
+                    <parallelOptimized>true</parallelOptimized>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
     </build>
 
