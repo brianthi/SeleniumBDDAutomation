@@ -14,16 +14,16 @@ public class LoginPage implements BasePage {
     public static final String URL = "https://accounts.craigslist.org/login";
 
     @Autowired
-    WebDriver webDriver;
+    private WebDriver webDriver;
 
     @FindBy(id = "inputEmailHandle")
-    WebElement emailField;
+    private WebElement emailField;
 
     @FindBy(id = "inputPassword")
-    WebElement passwordField;
+    private WebElement passwordField;
 
     @FindBy(css = "body > section > section > div > div.accountform.login-box > form > div.accountform-actions > button")
-    WebElement loginSubmitButton;
+    private WebElement loginSubmitButton;
 
     public void inputEmail(String email) {
         emailField.sendKeys(email);

@@ -19,13 +19,13 @@ import static org.junit.Assert.assertTrue;
 public class LoginSteps {
 
     @Autowired
-    WebDriver webDriver;
+    private WebDriver webDriver;
 
     @Autowired
-    LoginPage loginPage;
+    private LoginPage loginPage;
 
     @Autowired
-    AccountPage accountPage;
+    private AccountPage accountPage;
 
     @Before
     public void before()
@@ -33,7 +33,7 @@ public class LoginSteps {
         PageFactory.initElements(webDriver, loginPage);
     }
 
-    @Given("^On Craigsist login page$")
+    @Given("^On Craigslist login page$")
     public void givenOnCraigslistLoginPage() {
         loginPage.goTo();
         assertTrue(loginPage.isAt());

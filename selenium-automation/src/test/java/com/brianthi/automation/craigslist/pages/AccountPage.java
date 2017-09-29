@@ -12,7 +12,7 @@ public class AccountPage implements BasePage {
     public static final String URL = "https://accounts.craigslist.org/login/home?lang=en&cc=us";
 
     @Autowired
-    WebDriver webDriver;
+    private WebDriver webDriver;
 
     @Override
     public boolean isAt() {

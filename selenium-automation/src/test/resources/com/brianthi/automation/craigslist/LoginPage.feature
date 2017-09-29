@@ -1,7 +1,7 @@
 Feature: Homepage Feature
 
   Background: Unauthenticated on home page
-    Given On Craigsist login page
+    Given On Craigslist login page
 
   Scenario:
     When Submit valid email:seleniumautomationbthi@gmail.com and password:fMRdbjrWYio98cPJ0eG9
