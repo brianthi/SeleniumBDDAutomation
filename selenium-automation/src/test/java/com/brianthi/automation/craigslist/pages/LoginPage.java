@@ -14,6 +14,8 @@ public class LoginPage implements BasePage {
     public static final String URL = "https://accounts.craigslist.org/login?lang=en&cc=us";
     public static final String LOGOUT_URL = "https://accounts.craigslist.org/logout?lang=en&cc=us";
 
+    private static final String LOGIN_ERROR_MESSAGE = "Your email address, handle, or password is incorrect. Please try again.";
+
     @Autowired
     private WebDriver webDriver;
 
@@ -42,7 +44,7 @@ public class LoginPage implements BasePage {
     }
 
     public boolean isLoginErrorDisplayed() {
-        return loginErrorMessage.isDisplayed();
+        return loginErrorMessage.isDisplayed() && LOGIN_ERROR_MESSAGE.equals(loginErrorMessage.getText());
     }
 
     @Override
