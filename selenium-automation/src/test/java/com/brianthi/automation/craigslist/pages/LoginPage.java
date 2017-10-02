@@ -11,7 +11,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class LoginPage implements BasePage {
 
-    public static final String URL = "https://accounts.craigslist.org/login";
+    public static final String URL = "https://accounts.craigslist.org/login?lang=en&cc=us";
+    public static final String LOGOUT_URL = "https://accounts.craigslist.org/logout?lang=en&cc=us";
 
     @Autowired
     private WebDriver webDriver;
@@ -25,6 +26,9 @@ public class LoginPage implements BasePage {
     @FindBy(css = "body > section > section > div > div.accountform.login-box > form > div.accountform-actions > button")
     private WebElement loginSubmitButton;
 
+    @FindBy(css = "body > section > section > div > div.accountform.login-box > form > div.alert.alert-sm.alert-error > p")
+    private WebElement loginErrorMessage;
+
     public void inputEmail(String email) {
         emailField.sendKeys(email);
     }
@@ -37,6 +41,10 @@ public class LoginPage implements BasePage {
         loginSubmitButton.click();
     }
 
+    public boolean isLoginErrorDisplayed() {
+        return loginErrorMessage.isDisplayed();
+    }
+
     @Override
     public boolean isAt() {
         return URL.equals(webDriver.getCurrentUrl());
@@ -47,4 +55,7 @@ public class LoginPage implements BasePage {
         webDriver.get(URL);
     }
 
+    public void logout() {
+        webDriver.get(LOGOUT_URL);
+    }
 }

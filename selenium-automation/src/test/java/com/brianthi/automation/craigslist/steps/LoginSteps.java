@@ -39,16 +39,29 @@ public class LoginSteps {
         assertTrue(loginPage.isAt());
     }
 
-    @When("^Submit valid email:(.*) and password:(.*)$")
-    public void whenSubmitValidEmailAndPassword(String email, String password) {
+    @Given("^Unauthenticated on Craigslist login page$")
+    public void givenUnauthenticatedOnCraigslistLoginPage() {
+        loginPage.logout();
+        loginPage.goTo();
+        assertTrue(loginPage.isAt());
+    }
+
+    @When("^Submit email:(.*) and password:(.*)$")
+    public void whenSubmitEmailAndPassword(String email, String password) {
         loginPage.inputEmail(email);
         loginPage.inputPassword(password);
         loginPage.clickLogInButton();
     }
 
-    @Then("^Redirected to account page$")
+    @Then("^Forwarded to account page$")
     public void thenCurrentlyOnAccountPage() {
         assertTrue(accountPage.isAt());
+    }
+
+    @Then("^Shown login error message$")
+    public void shownLoginErrorMessage() {
+        assertTrue(loginPage.isAt());
+        assertTrue(loginPage.isLoginErrorDisplayed());
     }
 
 }
